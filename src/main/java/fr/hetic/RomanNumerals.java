@@ -6,6 +6,17 @@ public class RomanNumerals {
     private static final String[] symbols = { "M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
 
     public static String toRoman(int number) {
-        return "";
+        if (number <= 0 || number > 3000) {
+            throw new IllegalArgumentException("Le nombre doit être compris entre 1 et 3000");
+        }
+
+        StringBuilder roman = new StringBuilder();
+        for (int i = 0; i < values.length; i++) {
+            while (number >= values[i]) {
+                number -= values[i];
+                roman.append(symbols[i]);
+            }
+        }
+        return roman.toString();
     }
 }
