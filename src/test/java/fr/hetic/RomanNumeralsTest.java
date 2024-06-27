@@ -43,4 +43,19 @@ public class RomanNumeralsTest {
         assertThat(RomanNumerals.toRoman(1987)).isEqualTo("MCMLXXXVII");
         assertThat(RomanNumerals.toRoman(2024)).isEqualTo("MMXXIV");
     }
+
+    @Test
+    public void testToRoman_invalidNumbers() {
+        assertThatThrownBy(() -> RomanNumerals.toRoman(0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Le nombre doit être compris entre 1 et 3000");
+
+        assertThatThrownBy(() -> RomanNumerals.toRoman(-1))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Le nombre doit être compris entre 1 et 3000");
+
+        assertThatThrownBy(() -> RomanNumerals.toRoman(3001))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Le nombre doit être compris entre 1 et 3000");
+    }
 }
